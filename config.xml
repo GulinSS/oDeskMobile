@@ -17,4 +17,6 @@
         Hardeep Shoker 
     </author>
 
+    <content src='_public/index.html' />
+
 </widget>
