@@ -1,0 +1,16 @@
+{
+  "name": "bower-brunch",
+  "version": "0.0.2",
+  "main": [],
+  "dependencies": {
+    "console-polyfill": "*",
+    "bootstrap": "~2.3.2",
+    "font-awesome": "~3.1.1",
+    "angular": "~1.0.7",
+    "angular-sanitize": "~1.0.7",
+    "angular-resource": "~1.0.7",
+    "angular-cookies": "~1.0.7",
+    "angular-mocks": "git://github.com/fabsor/bower-angular-mocks.git#v1.0.4",
+    "zepto": "~1.0.0"
+  }
+}
