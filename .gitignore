@@ -9,6 +9,7 @@ node_modules
 .settings
 .idea/*
 
+_public
 vendor
 node_modules/*
 npm-debug.log
