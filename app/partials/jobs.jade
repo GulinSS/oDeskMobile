@@ -1,20 +1,30 @@
 div.jobs(ng-controller='JobsController')
-  form.form-horizontal(ng-submit="findJobs()")
-    .control-group
-      label.control-label Skills
-      .controls
-        input.span4(type="text", ng-model="skills")
-    .control-group
-      label.control-label Type
-      .controls
-        select.input-medium(multiple="multiple", ng-model="type")
-          option Hourly
-          option Fixed
-    .control-group
-      .controls
-        button.btn.btn-large.btn-primary.input-large(type="submit")
-          | <i class='icon-search'></i>
-          | Find
+  .row
+    .columns.small-centered.small-11
+      form.panel(ng-submit="findJobs()")
+        .row
+          .columns.small-12
+            .row
+              .columns.small-3
+                label.right.inline Skills
+              .columns.small-9
+                input(type="text", ng-model="skills")
+
+        .row
+          .columns.small-12
+            .row
+              .columns.small-3
+                label.right.inline Type
+              .columns.left.small-5
+                select(multiple="multiple", ng-model="type")
+                  option Hourly
+                  option Fixed
+
+        .row
+          .columns.small-12
+            button.right(type="submit")
+              | <i class='icon-search'></i>
+              | Find
 
   .results
     .item
