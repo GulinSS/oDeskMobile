@@ -1,0 +1,30 @@
+@green: green;
+@border: lighten(@green, 40%);
+@radius: 5px;
+
+.jobs {
+  .results {
+    .labels {
+      overflow: hidden;
+      padding: 3px;
+      background-color: @border;
+
+      .label {
+        margin-right: 2px;
+      }
+    }
+    .description {
+      padding: 3px;
+    }
+    .item {
+      display: inline-block;
+      text-align: justify;
+      max-width: 400px;
+      vertical-align: top;
+      margin: 5px 0px;
+
+      border: 1px solid @border;
+      .border-radius(@radius);
+    }
+  }
+}

@@ -46,7 +46,8 @@ exports.config =
     bower:
       extend:
         "jquery" : []
-        "bootstrap" : 'vendor/bootstrap/docs/assets/js/bootstrap.js'
+        "foundation" : ['vendor/foundation/scss/foundation.scss', 'vendor/foundation/scss/normalize.scss']
+        "lesshat" : []
         "angular-mocks": []
         "styles": []
       asserts:

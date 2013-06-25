@@ -1,15 +1,35 @@
-div(ng-app='ng-app')
-  div(ng-controller='TodoCtrl')
-    span {{remaining()}} of {{todos.length}} remaining
-    |  [
-    a(href='', ng-click='archive()') archive
-    | ]
-    ul.unstyled
-      li(ng-repeat='todo in todos')
-        label(class='checkbox inline')
-          input(type='checkbox', ng-model='todo.done')
-          span(class='done{{todo.done}}') {{todo.text}}
-    form(class='form-inline', ng-submit='addTodo()')
-      p
-        input(type='text', ng-model='todoText', size='30', placeholder='add new todo here')
-        input.btn.btn-primary(type='submit', value='add')
+div.jobs(ng-controller='JobsController')
+  form.form-horizontal(ng-submit="findJobs()")
+    .control-group
+      label.control-label Skills
+      .controls
+        input.span4(type="text", ng-model="skills")
+    .control-group
+      label.control-label Type
+      .controls
+        select.input-medium(multiple="multiple", ng-model="type")
+          option Hourly
+          option Fixed
+    .control-group
+      .controls
+        button.btn.btn-large.btn-primary.input-large(type="submit")
+          | <i class='icon-search'></i>
+          | Find
+
+  .results
+    .item
+      .labels
+        a.btn.btn-warning.btn-mini.pull-right(href='#')
+          | <i class='icon-share-alt'></i>
+          | Go
+        span.label.label-inverse Fixed
+        span.label.label-success 400$
+        span.label Part-time - 10-30 hrs/week
+        span.label.label-info More than 6 months
+      .description I have source code for an iOS slot machine game. I am looking to ‘reskin’ the game entirely by replacing symbol design, buttons, sounds, and an ‘unlock payout’ screen which is used to facilitate in-app purchases. \n\nI am looking for a contract with a fixed price, not an hourly wage. This is non-negotiable. \n\n\nThe resource folder contains approximately 30 graphics. I have a specific idea of what I want for many of the images – however there are several where I am open to ...
+
+  ul.pager
+    li.previous
+      a(href="#") &larr; Older
+    li.next.disabled
+      a(href="#") Newer &rarr;
