@@ -20,17 +20,20 @@ exports.config =
       order:
         before: [
           'vendor/console-polyfill/index.js'
-          'vendor/jquery/jquery.js'
           'vendor/angular/angular.js'          
           'vendor/angular-resource/angular-resource.js'          
           'vendor/angular-cookies/angular-cookies.js'          
           'vendor/angular-sanitize/angular-sanitize.js'                    
-          'vendor/bootstrap/docs/assets/js/bootstrap.js'
         ]
 
     stylesheets:
       joinTo:
         'css/app.css': /^(app|vendor)/
+      order:
+        before: [
+          'vendor/styles/foundation-4.2.2/normalize.css'
+          'vendor/styles/foundation-4.2.2/foundation.css'
+        ]
 
     templates:
       joinTo: 
@@ -46,10 +49,10 @@ exports.config =
     bower:
       extend:
         "jquery" : []
-        "foundation" : ['vendor/foundation/scss/foundation.scss', 'vendor/foundation/scss/normalize.scss']
         "lesshat" : []
         "angular-mocks": []
         "styles": []
+        "scripts": []
       asserts:
         "img" : /bootstrap(\\|\/)img/
         "font": /font-awesome(\\|\/)font/
