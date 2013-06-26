@@ -26,6 +26,9 @@ html(lang='en', ng-app='app')
     div(ng-app='ng-app')
       div(ng-view)
 
+    .footer(app-loading)
+      i.icon-refresh.icon-spin.icon-large
+
     script.
       var onDeviceReady = function() {
         angular.element(document).ready(function() {
