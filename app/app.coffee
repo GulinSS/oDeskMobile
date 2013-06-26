@@ -10,6 +10,8 @@ App = angular.module('app', [
   'app.directives'
   'app.filters'
   'app.services'
+  'app.services.rest'
+  'app.services.models.result'
   'app.models'
   'partials'
 ])
@@ -17,8 +19,9 @@ App = angular.module('app', [
 App.config([
   '$routeProvider'
   '$locationProvider'
+  '$httpProvider'
 
-($routeProvider, $locationProvider, config) ->
+($routeProvider, $locationProvider, $httpProvider, config) ->
 
   $routeProvider
 
@@ -29,4 +32,6 @@ App.config([
 
   # Without server side support html5 must be disabled.
   $locationProvider.html5Mode(false)
+
+  delete $httpProvider.defaults.headers.common["X-Requested-With"]
 ])

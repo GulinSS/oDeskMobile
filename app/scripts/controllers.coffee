@@ -36,9 +36,12 @@ angular.module('app.controllers', [])
 
 .controller('JobsController', [
   '$scope'
+  'FindRest'
+  'JobSearchResult'
 
-($scope) ->
-  $scope.findJobs = ->
-    console.log $scope.type
+  ($scope, FindRest, JobSearchResult) ->
+    $scope.findJobs = ->
+      FindRest.find($scope.type, $scope.skills)
+        .then (results) -> $scope.results = results
 ])
 

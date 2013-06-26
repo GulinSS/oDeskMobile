@@ -16,7 +16,8 @@
               .columns.small-3
                 label.right.inline Type
               .columns.left.small-5
-                select(multiple="multiple", ng-model="type")
+                select(ng-model="type")
+                  option(value="") None
                   option Hourly
                   option Fixed
 
@@ -27,57 +28,13 @@
               | Find
 
   .results
-    .item
+    .item(ng-repeat="jobSearchResult in results")
       .labels
-        a.button.small.radius.right(href='#')
+        a.button.small.radius.right(ng-href='{{ jobSearchResult.link }}', ng-click='jobSearchResult.go()')
           | <i class='icon-share-alt'></i>
           | Go
-        span.label.label-inverse Fixed
-        span.label.success 400$
-        span.label.alert Part-time - 10-30 hrs/week
-        span.label.secondary More than 6 months
-      .description I have source code for an iOS slot machine game. I am looking to ‘reskin’ the game entirely by replacing symbol design, buttons, sounds, and an ‘unlock payout’ screen which is used to facilitate in-app purchases. \n\nI am looking for a contract with a fixed price, not an hourly wage. This is non-negotiable. \n\n\nThe resource folder contains approximately 30 graphics. I have a specific idea of what I want for many of the images – however there are several where I am open to ...
-
-    .item
-      .labels
-        a.button.small.radius.right(href='#')
-          | <i class='icon-share-alt'></i>
-          | Go
-        span.label.label-inverse Fixed
-        span.label.success 400$
-        span.label.alert Part-time - 10-30 hrs/week
-        span.label.secondary More than 6 months
-      .description I have source code for an iOS slot machine game. I am looking to ‘reskin’ the game entirely by replacing symbol design, buttons, sounds, and an ‘unlock payout’ screen which is used to facilitate in-app purchases. \n\nI am looking for a contract with a fixed price, not an hourly wage. This is non-negotiable. \n\n\nThe resource folder contains approximately 30 graphics. I have a specific idea of what I want for many of the images – however there are several where I am open to ...
-
-    .item
-      .labels
-        a.button.small.radius.right(href='#')
-          | <i class='icon-share-alt'></i>
-          | Go
-        span.label.label-inverse Fixed
-        span.label.success 400$
-        span.label.alert Part-time - 10-30 hrs/week
-        span.label.secondary More than 6 months
-      .description I have source code for an iOS slot machine game. I am looking to ‘reskin’ the game entirely by replacing symbol design, buttons, sounds, and an ‘unlock payout’ screen which is used to facilitate in-app purchases. \n\nI am looking for a contract with a fixed price, not an hourly wage. This is non-negotiable. \n\n\nThe resource folder contains approximately 30 graphics. I have a specific idea of what I want for many of the images – however there are several where I am open to ...
-
-    .item
-      .labels
-        a.button.small.radius.right(href='#')
-          | <i class='icon-share-alt'></i>
-          | Go
-        span.label.label-inverse Fixed
-        span.label.success 400$
-        span.label.alert Part-time - 10-30 hrs/week
-        span.label.secondary More than 6 months
-      .description I have source code for an iOS slot machine game. I am looking to ‘reskin’ the game entirely by replacing symbol design, buttons, sounds, and an ‘unlock payout’ screen which is used to facilitate in-app purchases. \n\nI am looking for a contract with a fixed price, not an hourly wage. This is non-negotiable. \n\n\nThe resource folder contains approximately 30 graphics. I have a specific idea of what I want for many of the images – however there are several where I am open to ...
-
-    .item
-      .labels
-        a.button.small.radius.right(href='#')
-          | <i class='icon-share-alt'></i>
-          | Go
-        span.label.label-inverse Fixed
-        span.label.success 400$
-        span.label.alert Part-time - 10-30 hrs/week
-        span.label.secondary More than 6 months
-      .description I have source code for an iOS slot machine game. I am looking to ‘reskin’ the game entirely by replacing symbol design, buttons, sounds, and an ‘unlock payout’ screen which is used to facilitate in-app purchases. \n\nI am looking for a contract with a fixed price, not an hourly wage. This is non-negotiable. \n\n\nThe resource folder contains approximately 30 graphics. I have a specific idea of what I want for many of the images – however there are several where I am open to ...
+        span.label.label-inverse {{ jobSearchResult.type }}
+        span.label.success(ng-show="jobSearchResult.budget") {{ jobSearchResult.budget }}
+        span.label.alert(ng-show="jobSearchResult.busy") {{ jobSearchResult.busy }}
+        span.label.secondary(ng-show="jobSearchResult.time") {{ jobSearchResult.time }}
+      .description {{ jobSearchResult.description }}

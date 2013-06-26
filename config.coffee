@@ -40,6 +40,10 @@ exports.config =
         'js/dontUseMe' : /^app/ # dirty hack for Jade compiling.
 
   plugins:
+    coffeelint:
+      options:
+        max_line_length:
+          level: "warn"
     jade:
       pretty: yes # Adds pretty-indentation whitespaces to output (false by default)
     jade_angular:
