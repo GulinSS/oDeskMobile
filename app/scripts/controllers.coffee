@@ -39,7 +39,6 @@ angular.module('app.controllers', [])
   'FindRest'
   ($scope, FindRest) ->
     $scope.findJobs = ->
-      FindRest.find($scope.type, $scope.skills)
-        .then (results) -> $scope.results = results
+      $scope.results = FindRest.find($scope.type, $scope.skills)
 ])
 
