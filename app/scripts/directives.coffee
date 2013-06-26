@@ -6,11 +6,12 @@
 angular.module('app.directives', [])
 
 .directive("appLoading", [
+  "AppLoading"
   "$rootScope"
-  ($rootScope) ->
+  (AppLoading, $rootScope) ->
     (scope, element) ->
-      $rootScope.$on "appLoading-show", ->
+      $rootScope.$on AppLoading.eventNames.show, ->
         element.css display: "block"
-      $rootScope.$on "appLoading-hide", ->
+      $rootScope.$on AppLoading.eventNames.hide, ->
         element.css display: "none"
   ])

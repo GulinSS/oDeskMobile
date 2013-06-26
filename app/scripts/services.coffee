@@ -6,6 +6,10 @@ angular.module('app.services', [])
 .service("AppLoading", [
   "$rootScope"
   ($rootScope) ->
-    @show = -> $rootScope.$emit "appLoading-show"
-    @hide = -> $rootScope.$emit "appLoading-hide"
+    @eventNames =
+      show: "appLoading-show"
+      hide: "appLoading-hide"
+
+    @show = -> $rootScope.$emit @eventNames.show
+    @hide = -> $rootScope.$emit @eventNames.hide
 ])
