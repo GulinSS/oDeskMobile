@@ -1,30 +1,137 @@
-@green: green;
-@border: lighten(@green, 40%);
+@border: #ceedc5;
 @radius: 5px;
+
+.margin-center(@width) {
+  margin: 0px auto;
+  width: @width;
+}
 
 .jobs {
   .results {
+    @margin: 5px;
+    @min-width: 300px;
+    @width: @min-width+100px;
+
+    @min-width-two-columns: (@min-width + @margin*2)*2;
+    @width-two-columns: (@width + @margin*2)*2;
+    @width-max-columns: @width-two-columns*3/2;
+
+    // https://github.com/less/less.js/issues/965#issuecomment-17483536
+    .one-column() {
+      @media (max-width: @min-width-two-columns) {
+        .content();
+      }
+    }
+
+    .two-columns-min() {
+      @media (min-width: @min-width-two-columns) and (max-width: @width-two-columns) {
+        .content();
+      }
+    }
+
+    .two-columns() {
+      @media (min-width: @width-two-columns) and (max-width: @width-max-columns) {
+        .content();
+      }
+    }
+
+    .max-columns() {
+      @media (min-width: @width-max-columns) {
+        .content();
+      }
+    }
+
     .labels {
       overflow: hidden;
       padding: 3px;
       background-color: @border;
 
       .label {
-        margin-right: 2px;
+        margin: 2px;
       }
     }
+
     .description {
       padding: 3px;
     }
+
     .item {
       display: inline-block;
       text-align: justify;
-      max-width: 400px;
+
+      overflow-y: hidden;
+
       vertical-align: top;
-      margin: 5px 0px;
+      margin: 5px;
 
       border: 1px solid @border;
       .border-radius(@radius);
+
+      .description {
+        font-family: "Georgia", serif;
+        font-size: 1.2em;
+        line-height: 1.2em;
+
+        overflow-y: hidden;
+      }
+
+      & {
+        .content() {
+          .size(@min-width, @width);
+        }
+
+        .two-columns-min();
+      }
+
+      & {
+        .content() {
+          .size(@width, @width*3/4);
+        }
+
+        .two-columns();
+        .max-columns();
+      }
+
+      & {
+        .content() {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .one-column();
+      }
+    }
+
+    & {
+      .content() {
+        .margin-center(@min-width-two-columns + 5px);
+      }
+
+      .two-columns-min();
+    }
+
+    & {
+      .content() {
+        .margin-center(@width-two-columns + 5px);
+      }
+
+      .two-columns();
+    }
+
+    & {
+      .content() {
+        text-align: center;
+      }
+
+      .max-columns();
+    }
+
+    & {
+      .content() {
+        .margin-center("auto");
+      }
+
+      .one-column();
     }
   }
 }
