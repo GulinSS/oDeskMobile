@@ -6,8 +6,9 @@ angular.module('app.services.rest', [])
 
 .service("FindRest", [
   "JobSearchResult"
+  "AppLoading"
   "$http"
-  (JobSearchResult, $http) ->
+  (JobSearchResult, AppLoading, $http) ->
     searchJobsUrl = "https://www.odesk.com/api/profiles/v1/search/jobs.json"
 
     getBudget = (one) ->
@@ -22,13 +23,12 @@ angular.module('app.services.rest', [])
       else throw new Error "Unknown type of job"
 
     @find = (type, skills) ->
-      promise = $http
-        method: "GET"
-        url: searchJobsUrl
-        params:
-          qs: skills ?= ""
-          t: type ?= ""
-      promise.then (response) ->
+      AppLoading.show()
+
+      success = (response) ->
+        AppLoading.hide()
+
+        return [] if response.data.jobs.job is undefined
         response.data.jobs.job.map (one) ->
 
           new JobSearchResult
@@ -38,4 +38,14 @@ angular.module('app.services.rest', [])
             busy: one.op_engagement
             time: one.engagement_weeks
             description: one.op_description
+
+      promise = $http
+        method: "GET"
+        url: searchJobsUrl
+        params:
+          qs: skills ?= ""
+          t: type ?= ""
+      promise.then success, ->
+        AppLoading.hide()
+        alert "Connection error! Check your Internet connection."
 ])
