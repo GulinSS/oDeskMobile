@@ -15,3 +15,17 @@ angular.module('app.directives', [])
       $rootScope.$on AppLoading.eventNames.hide, ->
         element.css display: "none"
   ])
+
+.directive("appScrollPage", [
+  "$window"
+  ($window) ->
+    (scope, element, attrs) ->
+      appScrollPage = scope.$eval attrs.appScrollPage
+      $window.onscroll = ->
+        scrollTop = $window.pageYOffset || $window.document.documentElement.scrollTop
+        height = $window.document.height
+        deviceHeight = $window.document.documentElement.clientHeight
+
+        if (scrollTop + deviceHeight) > height
+          appScrollPage()
+])

@@ -22,7 +22,12 @@ angular.module('app.services.rest', [])
         else undefined
       else throw new Error "Unknown type of job"
 
-    @find = (type, skills) ->
+    getPage = (page) ->
+      multiplier = 10
+      from = (page-1)*multiplier
+      from+";"+multiplier
+
+    @find = (type, skills, page = 1) ->
       AppLoading.show()
 
       success = (response) ->
@@ -45,6 +50,7 @@ angular.module('app.services.rest', [])
         params:
           qs: skills ?= ""
           t: type ?= ""
+          page: getPage page
       promise.then success, ->
         AppLoading.hide()
         alert "Connection error! Check your Internet connection."

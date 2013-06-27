@@ -38,7 +38,20 @@ angular.module('app.controllers', [])
   '$scope'
   'FindRest'
   ($scope, FindRest) ->
+    page = 1
+
+    iAmFinding = false
+    $scope.nextPage = ->
+      return if iAmFinding
+      iAmFinding = true
+      page++
+      FindRest.find($scope.type, $scope.skills, page).then (values) ->
+        values.forEach (value) ->
+          $scope.results.push value
+        iAmFinding = false
+
     $scope.findJobs = ->
-      $scope.results = FindRest.find($scope.type, $scope.skills)
+      FindRest.find($scope.type, $scope.skills, page).then (values) ->
+        $scope.results = values
 ])
 
