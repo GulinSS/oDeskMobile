@@ -1,4 +1,4 @@
-.jobs(ng-controller='JobsController', app-scroll-page="nextPage")
+.jobs(ng-controller='JobsController')
   .row
     .columns.small-centered.small-11
       form.panel(ng-submit="findJobs()")
@@ -38,3 +38,9 @@
         span.label.alert(ng-show="jobSearchResult.busy") {{ jobSearchResult.busy }}
         span.label.secondary(ng-show="jobSearchResult.time") {{ jobSearchResult.time }}
       .description {{ jobSearchResult.description }}
+
+  .row
+    .columns.large-9.large-centered
+      button.button.expand.radius.secondary(ng-show="results", ng-click="nextPage()")
+        | <i class='icon-download icon-large'></i>
+        | Load more results

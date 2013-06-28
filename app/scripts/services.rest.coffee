@@ -23,7 +23,7 @@ angular.module('app.services.rest', [])
       else throw new Error "Unknown type of job"
 
     getPage = (page) ->
-      multiplier = 10
+      multiplier = 20
       from = (page-1)*multiplier
       from+";"+multiplier
 

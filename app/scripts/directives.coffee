@@ -16,6 +16,7 @@ angular.module('app.directives', [])
         element.css marginBottom: "-50px"
   ])
 
+# Not working in Android
 .directive("appScrollPage", [
   "$window"
   ($window) ->
