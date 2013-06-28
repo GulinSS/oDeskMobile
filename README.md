@@ -18,7 +18,14 @@ Technologies:
 
 ## Screenshots
 
+Initial screen on iPhone-like device:
 ![Mobile](http://gulinss.github.io/oDeskMobile/1.png)
+
+Search results and bottom loading splash animated via CSS3 Transitions and CSS3 Animations:
 ![Loading](http://gulinss.github.io/oDeskMobile/2.png)
+
+iPad-like portrait mode with good money project for .NET developers:
 ![Tablet Portrait](http://gulinss.github.io/oDeskMobile/3.png)
+
+iPad-like landscape mode with wide items on grid:
 ![Tablet Landscape](http://gulinss.github.io/oDeskMobile/4.png)
