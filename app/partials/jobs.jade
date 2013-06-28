@@ -1,0 +1,46 @@
+.jobs(ng-controller='JobsController')
+  .row
+    .columns.small-centered.small-11
+      form.panel(ng-submit="findJobs()")
+        .row
+          .columns.small-12
+            .row
+              .columns.small-3
+                label.right.inline Skills
+              .columns.small-9
+                input(type="text", ng-model="skills")
+
+        .row
+          .columns.small-12
+            .row
+              .columns.small-3
+                label.right.inline Type
+              .columns.left.small-5
+                select(ng-model="type")
+                  option(value="") None
+                  option Hourly
+                  option Fixed
+
+        .row
+          .columns.small-8.small-centered
+            button.button.expand.radius.success(type="submit")
+              | <i class='icon-search icon-large'></i>
+              | Find
+
+  .results
+    .item(ng-repeat="jobSearchResult in results")
+      .labels
+        a.button.small.radius.right(ng-href='{{ jobSearchResult.link }}', ng-click='jobSearchResult.go()')
+          | <i class='icon-share-alt'></i>
+          | Go
+        span.label.label-inverse {{ jobSearchResult.type }}
+        span.label.success(ng-show="jobSearchResult.budget") {{ jobSearchResult.budget }}
+        span.label.alert(ng-show="jobSearchResult.busy") {{ jobSearchResult.busy }}
+        span.label.secondary(ng-show="jobSearchResult.time") {{ jobSearchResult.time }}
+      .description {{ jobSearchResult.description }}
+
+  .row
+    .columns.large-9.large-centered
+      button.button.expand.radius.secondary(ng-show="results", ng-click="nextPage()")
+        | <i class='icon-download icon-large'></i>
+        | Load more results

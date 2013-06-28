@@ -1,0 +1,30 @@
+@import "/vendor/lesshat/lesshat.less";
+@import "/vendor/styles/foundation-4.2.2/normalize.less";
+@import "/vendor/styles/foundation-4.2.2/foundation.less";
+@import "_font-awesome/font-awesome.less";
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  padding: 12px;
+  width: 100%;
+
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+
+  display: block;
+  margin-bottom: -50px;
+  .opacity(0.7);
+
+  span {
+    padding-left: 10px;
+  }
+
+  overflow: hidden;
+
+  .transition(~"all 0.25s ease-in-out");
+}
+
+@import "_jobs.less";
