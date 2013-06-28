@@ -14,13 +14,17 @@
   font-weight: bold;
   font-size: 1.2em;
 
-  display: none;
-
+  display: block;
+  margin-bottom: -50px;
   .opacity(0.7);
 
   span {
     padding-left: 10px;
   }
+
+  overflow: hidden;
+
+  .transition(~"all 0.25s ease-in-out");
 }
 
 @import "_jobs.less";

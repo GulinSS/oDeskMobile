@@ -43,6 +43,7 @@ angular.module('app.controllers', [])
     iAmFinding = false
     $scope.nextPage = ->
       return if iAmFinding
+      return if $scope.results is undefined
       iAmFinding = true
       page++
       FindRest.find($scope.type, $scope.skills, page).then (values) ->

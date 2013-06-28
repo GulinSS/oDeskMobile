@@ -11,9 +11,9 @@ angular.module('app.directives', [])
   (AppLoading, $rootScope) ->
     (scope, element) ->
       $rootScope.$on AppLoading.eventNames.show, ->
-        element.css display: "block"
+        element.css marginBottom: "0px"
       $rootScope.$on AppLoading.eventNames.hide, ->
-        element.css display: "none"
+        element.css marginBottom: "-50px"
   ])
 
 .directive("appScrollPage", [
