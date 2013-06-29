@@ -46,6 +46,7 @@ angular.module('app.controllers', [])
           $scope.results.push value
 
     $scope.findJobs = ->
+      page = 1
       FindRest.find($scope.type, $scope.skills, page).then (values) ->
         $scope.results = values
 ])
