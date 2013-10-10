@@ -5,7 +5,8 @@
 angular.module('app.services.models.result', [])
 
 .factory("JobSearchResult", [
-  ->
+  '$window'
+  ($window) ->
     class JobSearchResult
       constructor: (dto) ->
         @link = dto.link
@@ -16,5 +17,5 @@ angular.module('app.services.models.result', [])
         @description = dto.description
 
       go: ->
-        window.open(@link, '_blank', 'location=yes')
+        $window.open(@link, '_blank', 'location=yes')
 ])
